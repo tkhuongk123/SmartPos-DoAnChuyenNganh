@@ -1,0 +1,28 @@
+.LoginLayout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.LoginLayout_Main {
+    flex: 1;
+    align-content: center;
+    text-align: center;
+}
+
+
+.LoginLayout_Main>img {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+    animation: zoom-infi 1s ease-in-out infinite alternate;
+}
+
+@keyframes zoom-infi {
+    0% {
+        padding: 10px;
+    }
+    100% {
+        padding: 0px;
+    }
+}

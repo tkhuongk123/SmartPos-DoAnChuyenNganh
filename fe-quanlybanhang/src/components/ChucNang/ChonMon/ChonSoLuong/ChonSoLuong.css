@@ -1,0 +1,221 @@
+.display-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.display-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.ChonSoLuong {
+    justify-content: center;
+    align-items: center;
+    background-color: #00000030;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    
+}
+
+
+/* DETAIL SECTION */
+.ChonSoLuong_content {
+    width: 900px;
+    max-height: 95vh;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 1px #00000062;
+}
+
+.ChonSoLuong_content-header .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.ChonSoLuong_content-header .back-btn:hover {
+    background: #e0e0e0;
+}
+
+.ChonSoLuong_content-detail>* {
+    margin: 10px 0;
+}
+
+
+
+.ChonSoLuong_content-header {
+    color: var(--primary-color);
+}
+
+.ChonSoLuong_content-body {
+    display: flex;
+    gap: 30px;
+}
+
+.ChonSoLuong_content-body .detail-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.ChonSoLuong_content-body .detail-img .detail-img-large {
+    width: 450px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.ChonSoLuong_content-body .detail-info {
+  width: 100%;
+
+}
+
+.ChonSoLuong_content-body .detail-info .name {
+    font-size: 32px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+}
+
+
+.ChonSoLuong_content-body .detail-info .detail-price {
+    font-size: 36px;
+    color: #ff6b35;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.ChonSoLuong_content-body .detail-info .detail-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 16px;
+    max-height: 100px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;     /* số dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+.ChonSoLuong_content-body .detail-info .detail-quantity-selector,
+.ChonSoLuong_content-body .detail-info .detail-note {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.ChonSoLuong_content-body .detail-info .detail-quantity-selector label, 
+.ChonSoLuong_content-body .detail-info .detail-note label {
+    font-weight: 600;
+    color: #333;
+}
+
+
+.ChonSoLuong_content-body .detail-info .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.ChonSoLuong_content-body .detail-info .quantity-controls button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.ChonSoLuong_content-body .detail-info .quantity-controls button:hover {
+    background: #f0f0f0;
+}
+
+.ChonSoLuong_content-body .detail-info .quantity-controls input {
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+.ChonSoLuong_content-body .detail-info .note-controls {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-left: 7px;
+}
+
+.ChonSoLuong_content-body .detail-info .note-controls textarea {
+    border: none;
+    width: 250px;
+    height: 100px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 14px;
+    transition: all 0.4s ease;
+}
+
+.ChonSoLuong_content-body .detail-info .note-controls textarea:focus {
+
+
+}
+
+
+
+.ChonSoLuong_content-body .detail-info .detail-add {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    flex: 1;
+    padding: 15px 30px;
+    background: #ff6b35;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.ChonSoLuong_content-body .detail-info .detail-add:hover {
+    background: #ff5722;
+    transform: translateY(-2px);
+
+}
+
+

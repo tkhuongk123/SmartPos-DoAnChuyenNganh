@@ -1,0 +1,103 @@
+.XemGioHang_content {
+    padding: 20px;
+}
+
+.XemGioHang_content >h2{
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.XemGioHang_content .XemGioHang_address {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f1f1f1;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.XemGioHang_content .XemGioHang_address .content {
+    display: flex;
+}
+
+.XemGioHang_item-delete {
+    flex: 0.5;
+    text-align: center;
+}
+
+.XemGioHang_item {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: -1px 1px 2px 1px #00000038;
+    height: 100px;
+    overflow: hidden;
+    margin: 20px;
+    border: 1px solid #ccc;
+}
+
+.XemGioHang_item-sanpham {
+    flex: 3.4;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.XemGioHang_item-delete {
+    flex: 0.5;
+}
+
+.XemGioHang_item-delete>i {
+    color: #fff;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.XemGioHang_item-control {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.XemGioHang_item-control > button {
+    padding: 8px;
+    background-color: var(--primary-color);;
+    border-radius: var(--border-radius);
+    color: #fff;
+}
+
+.XemGioHang_item-control >span {
+    margin: 0 10px;
+}
+
+.XemGioHang_don {
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    font-size: 20px;
+    border-radius: var(--border-radius);
+}
+
+.XemGioHang_don .XemGioHang_don-primary {
+    font-weight: bold;
+}
+
+.XemGioHang_don button {
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 2px 2px #0000002c;
+    border: 1px solid #ccc;
+}
+

@@ -1,0 +1,46 @@
+.DanhSachDonHang_content {
+    padding: 0 20px;
+}
+
+.DanhSachDonHang_content-table * {
+    font-size: 18px;
+}
+
+
+.chucNang1_content {
+    width: fit-content;
+    background-color: #00ff6a;
+    padding: 10px 14px;
+    border-radius: var(--border-radius);
+    color: #333;
+    cursor: pointer;
+}
+
+.chucNang2_content {
+    width: fit-content;
+    background-color: #ff0000;
+    padding: 10px 14px;
+    border-radius: var(--border-radius);
+    color: #333;
+    cursor: pointer;
+}
+
+.chucNang3_content {
+    width: fit-content;
+    background-color: #1d92ff;
+    padding: 10px 14px;
+    border-radius: var(--border-radius);
+    color: #333;
+    cursor: pointer;
+}
+
+.chucNang4_content {
+    width: fit-content;
+    background-color: #00e1ff;
+    padding: 10px 14px;
+    border-radius: var(--border-radius);
+    color: #333;
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,14 @@
+:root {
+    --with-toolbar: 220px;
+}
+
+.DefaultLayout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: var(--with-toolbar);
+} 
+
+.DefaultLayout_Main {
+    flex: 1;
+}

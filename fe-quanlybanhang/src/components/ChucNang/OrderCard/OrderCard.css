@@ -1,0 +1,67 @@
+.kh-order-card {
+    background: #fff; border-radius: 16px; padding: 14px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer;
+    transition: transform 0.18s, box-shadow 0.18s;
+    border: 1.5px solid transparent;
+    margin-top: 10px;
+}
+
+.kh-order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.10);
+  border-color: #90CAF9;
+}
+
+.kh-order-card:active { 
+    transform: scale(0.98); 
+}
+
+.kh-order-card .order-card-top { 
+    display: flex; justify-content: space-between; align-items: flex-start; 
+}
+
+.kh-order-card .order-card-top .order-card-code { 
+    font-family: 'Lexend', sans-serif; font-size: 18px; font-weight: 700; color: #1a1a2e; 
+}
+
+.kh-order-card .order-card-top .order-card-location { 
+    font-size: 11px; color: #aaa; margin-top: 3px; 
+}
+
+.kh-order-card .order-card-top .order-status-pill {
+  font-size: 11px; font-weight: 600; padding: 4px 10px;
+  border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+}
+
+.kh-order-card .order-card-divider { 
+    height: 1px; background: #f5f5f5; margin: 10px 0; 
+}
+
+.kh-order-card .order-card-bottom { 
+    display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; 
+}
+
+.kh-order-card .order-card-bottom .order-card-items { 
+    display: flex; gap: 6px; flex-wrap: wrap; flex: 1; 
+}
+
+.kh-order-card .order-card-bottom .order-card-items .item-chip { 
+    background: #f5f5f5; border-radius: 8px; padding: 3px 8px; font-size: 11px; color: #666; 
+}
+
+.kh-order-card .order-card-bottom .order-card-items .item-chip.muted { 
+    color: #aaa; 
+}
+
+
+.kh-order-card .order-card-bottom .order-card-meta { 
+    display: flex; flex-direction: column; align-items: flex-end; gap: 2px; flex-shrink: 0; 
+}
+
+.kh-order-card .order-card-bottom .order-card-meta .order-time { 
+    font-size: 11px; color: #bbb; 
+}
+
+.kh-order-card .order-card-bottom .order-card-meta .order-amount { 
+    font-family: 'Lexend', sans-serif; font-size: 13px; font-weight: 700; color: #1a1a2e; 
+}

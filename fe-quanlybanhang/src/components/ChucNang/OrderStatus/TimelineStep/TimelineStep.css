@@ -1,0 +1,12 @@
+/* ── Timeline ── */
+.timeline    { padding: 4px 16px 16px; display: flex; flex-direction: column; }
+.tl-item     { display: flex; gap: 12px; align-items: flex-start; }
+.tl-left     { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; width: 36px; }
+.tl-dot      { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s ease; z-index: 1; }
+.tl-dot-icon { font-size: 15px; line-height: 1; }
+.tl-line     { width: 2px; flex: 1; min-height: 14px; margin: 2px 0; border-radius: 1px; transition: background 0.4s; }
+.tl-content  { flex: 1; border: 1.5px solid #ececec; border-radius: 12px; padding: 10px 14px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s; }
+.tl-label    { font-size: 13px; font-weight: 600; transition: color 0.3s; }
+.tl-sublabel { font-size: 11px; color: #aaa; margin-top: 2px; }
+.tl-badge    { color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+.tl-check    { font-size: 16px; font-weight: 700; flex-shrink: 0; }

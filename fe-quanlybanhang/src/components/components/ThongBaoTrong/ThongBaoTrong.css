@@ -1,0 +1,23 @@
+.ThongBaoTrong {
+    margin: 20px;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    font-size: 20px;
+    border-radius: var(--border-radius);
+}
+
+.ThongBaoTrong .ThongBaoTrong-primary {
+    font-weight: bold;
+}
+
+.ThongBaoTrong button {
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 2px 2px #0000002c;
+    border: 1px solid #ccc;
+}

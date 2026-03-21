@@ -1,0 +1,71 @@
+.DangNhap {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.DangNhap_main {
+    width: 50%;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.DangNhap_main>h2 {
+    text-align: center;
+}
+
+.DangNhap_form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.DangNhap_form>input {
+    padding-top: 8px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.DangNhap_form>input:focus {
+    border-color: #000;
+}
+
+.DangNhap_form>button {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+}
+
+.DangNhap_option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.DangNhap_option-nhoMatKhau {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.DangNhap_option-nhoMatKhau>input {
+    cursor: pointer;
+}
+
+.DangNhap_option-nhoMatKhau>label {
+    padding-left: 4px;
+    cursor: pointer;
+}
+
+.DangNhap_option-quenMatKhau>span {
+    color: #0a86ce;
+    cursor: pointer;
+}

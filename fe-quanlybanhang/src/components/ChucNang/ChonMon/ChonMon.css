@@ -1,0 +1,245 @@
+.ChonMon_header {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 30px 0;
+  background-color: #EE4D2D;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.ChonMon_content {
+    padding: 20px 20px 50px 20px;
+    background: #f9fafb;
+}
+
+.ChonMon_item {
+    margin: 40px 0;
+}
+
+/* Bộ lọc */
+.ChonMon_filter {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ChonMon_filter .filter-loai {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.ChonMon_filter .filter-loai .filter-btn {
+  padding: 10px 20px;
+  border: 2px solid #ff6b35;
+  background-color: white;
+  color: #333;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.ChonMon_filter .filter-loai .filter-btn:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
+.ChonMon_filter .filter-loai .filter-btn.active {
+  background-color: #ff6b35;
+  color: white;
+  border-color: #ff6b35;
+}
+
+/* Thanh tìm kiếm */
+.ChonMon_filter .search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ChonMon_filter .search-container .search-mon-an {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.ChonMon_filter .search-container .search-mon-an:focus {
+  outline: none;
+  border-color: #ff6b35;
+}
+
+.ChonMon_filter .search-container .search-clear {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.ChonMon_filter .search-container .search-clear:hover {
+  color: #ff6b35;
+}
+
+
+.ChonMon_list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ChonMon_list .MonAn {
+    width: calc(100% / 4 - 30px);
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    box-shadow: -1px 1px 2px 1px #00000038;
+    transition: all 0.3s ease;
+}
+
+.ChonMon_list .MonAn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.ChonMon_list .MonAn-img>img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+.ChonMon_list .MonAn-title {
+    margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+}
+
+.ChonMon_list .MonAn-price {
+    margin: 10px 0;
+}
+
+.ChonMon_list .MonAn-price > span {
+    color: #ff0000;
+}
+
+.ChonMon_list .MonAn-sub-info {
+  color: #4b5563;
+  font-size: 13px;
+}
+
+.ChonMon_list .MonAn-sub-info .order-quantity {
+  padding-right: 5px;
+}
+
+.ChonMon_list .MonAn-sub-info .like-quantity {
+  padding-left: 10px;
+  border-left: 1px solid #4b5563;
+}
+
+.ChonMon_list .MonAn-add {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    color: #fff;
+}
+
+.ChonMon_pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 1240px) {
+    .ChonMon_list .MonAn {
+        width: calc(100% / 2 - 20px);
+    }
+}
+
+/* === WHY CHOOSE US === */
+.why-choose-us {
+  padding: 80px 20px;
+  /* margin-top: 30px; */
+  background: white;
+  text-align: center;
+  border-top: 5px solid #EE4D2D;
+}
+
+.why-header h2 {
+  font-family: "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.why-header p {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.why-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.why-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: #e0ecff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  color: #EE4D2D;
+}
+
+.why-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
