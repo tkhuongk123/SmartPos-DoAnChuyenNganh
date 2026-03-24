@@ -15,10 +15,9 @@ function Login() {
             const data = await LoginAPI({username, password})
 
             if(data.taiKhoan) {
-                // console.log(">>> data: ", data.taiKhoan);
                 sessionStorage.setItem('user', JSON.stringify(data.taiKhoan))
                 if(data.taiKhoan.role == "MANAGER") {
-                    window.location.href = "/quanly/thongke";
+                    window.location.href = "/quanly/dashboard";
                 } else if(data.taiKhoan.role == "CASHIER") {
                     window.location.href = "/nhanvien/xemtrangthaiban";
                 } else if(data.taiKhoan.role == "KITCHEN") {

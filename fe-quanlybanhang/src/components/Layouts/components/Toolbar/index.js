@@ -9,13 +9,13 @@ function Toolbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const nguoidung = JSON.parse(sessionStorage.getItem("nguoidung")) || '';
+    const user = JSON.parse(sessionStorage.getItem("user")) || '';
     const tableRes = JSON.parse(sessionStorage.getItem(`table`)) || '';
-    if(nguoidung.tennguoidung)
+    if(user.name)
     {
-      setTenNguoiDung(nguoidung.tennguoidung);
+      setTenNguoiDung(user.name);
     }
-    if (!nguoidung) {
+    if (!user) {
       setDsChucNang(
         <>
           <li
@@ -43,96 +43,71 @@ function Toolbar() {
       );
     }
     
-    if (nguoidung.idquyen === 0) {
+    if (user.role == "MANAGER") {
       setDsChucNang(
         <>
           <li
             onClick={() => {
-              navigate("/quanly/thongke");
+              navigate("/quanly/dashboard");
             }}
           >
             Thống kê
           </li>
           <li
             onClick={() => {
-              navigate("/quanly/donhang");
+              navigate("/quanly/food");
             }}
           >
-            Lịch sử đơn hàng
+            Quản lý món ăn
           </li>
           <li
             onClick={() => {
-              navigate("/quanly/xemdanhgia");
+              navigate("/quanly/food-category");
             }}
           >
-            Xem đánh giá
+            Quản lý loại món ăn
           </li>
           <li
             onClick={() => {
-              navigate("/quanly/taikhoan");
+              navigate("/quanly/import");
             }}
           >
-            Tài khoản
+            Quản lý nhập hàng
           </li>
           <li
             onClick={() => {
-              navigate("/quanly/sanpham");
+              navigate("/quanly/supplier");
             }}
           >
-            Sản phẩm
+            Quản lý nhà cung cấp
           </li>
           <li
             onClick={() => {
-              navigate("/quanly/loaisanpham");
+              navigate("/quanly/order");
             }}
           >
-            Loại sản phẩm
-          </li>
-        </>
-      );
-      
-    } else if (nguoidung.idquyen === 1) {
-      setDsChucNang(
-        <>
-          <li
-            onClick={() => {
-              navigate("/nhanvien/nhandon");
-            }}
-          >
-            Nhận đơn
+            Xem lịch sử đon hàng
           </li>
           <li
             onClick={() => {
-              navigate("/nhanvien/tradon");
+              navigate("/quanly/staff");
             }}
           >
-            Trả đơn
+            Quản lý nhân viên 
           </li>
           <li
             onClick={() => {
-              navigate("/nhanvien/xuathoadon");
+              navigate("/quanly/table");
             }}
           >
-            Xuất hóa đơn
-          </li>
-        </>
-      );
-    } else if (nguoidung.idquyen === 2) {
-      setDsChucNang(
-        <>
-          <li
-            onClick={() => {
-              navigate("/bep/nhandon");
-            }}
-          >
-            Nhận đơn
+            Quản lý bàn
           </li>
           <li
             onClick={() => {
-              navigate("/bep/tradon");
+              navigate("/quanly/table-area");
             }}
           >
-            Trả đơn
+            Quản lý khu vực bàn
           </li>
         </>
       );
@@ -145,7 +120,7 @@ function Toolbar() {
         <div className="Toolbar_content-img">
           <img src={`${process.env.PUBLIC_URL}/favicon.png`} alt="Logo" />
         </div>
-        {/* <h4>{table != null ? table.table_name : ""}</h4> */}
+      <h4>{tenNguoiDung != "" ? `Quản lý - ${tenNguoiDung}` : ""}</h4>
         <div className="Toolbar_content-subnav">
           <ul>
             {dsChucNang}
@@ -153,7 +128,7 @@ function Toolbar() {
               onClick={(event) => {
                 navigate('/')
                 setTimeout(() => {
-                  sessionStorage.removeItem("nguoidung");
+                  sessionStorage.removeItem("user");
                   window.location.reload();
                 }, 100)
               }}
