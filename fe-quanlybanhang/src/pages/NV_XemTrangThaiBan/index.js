@@ -226,8 +226,8 @@ function NV_XemTrangThaiBan() {
         <div className="tb-logo">Smart<span>POS</span></div>
         <div style={{ fontSize: 13, color: "#fff9", fontWeight: 600 }}>Màn hình thu ngân</div>
         <div className="tb-spacer" />
+        <button className="tb-order" onClick={() => {navigate("/nhanvien/xemdonhang")}}>🛒 Xem Orders</button>
         <button className="tb-order" onClick={() => {openOrderForTable()}}>🛒 Order mang về</button>
-        {/* <button className="tb-order" onClick={() => {navigate("/nhanvien/xemdonhang")}}>🛒 Xem Orders</button> */}
         <div className="tb-clock">
           {clock.toLocaleTimeString("vi-VN")} — {clock.toLocaleDateString("vi-VN")}
         </div>

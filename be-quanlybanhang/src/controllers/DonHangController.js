@@ -80,7 +80,7 @@ class DonHangController {
 
     layDanhSachTheoOrderMethod(req, res, next) {
         const {order_method} = req.body;
-        const query = "SELECT * from orders where order_method=?";
+        const query = "SELECT * from orders where order_method=? and DATE(created_at) = CURDATE()";
         const values = [order_method];
         db.query(query, values, (error, result, field) => {
             if(error) {

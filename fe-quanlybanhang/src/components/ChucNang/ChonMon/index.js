@@ -51,9 +51,8 @@ function ChonMon() {
       {
         const tableRes = await getTableById(tableId); 
         if (isCancelled) return;
-        if(tableRes.data && tableRes.data.table_status == "EMPTY")
+        if(tableRes.data)
         {
-          // socket.emit("open-table", tableRes.data);
           sessionStorage.setItem("table", JSON.stringify(tableRes.data));
           setTable(tableRes.data);
           NotifySuccess(`Đã chọn bàn ${tableRes.data.table_id}`);

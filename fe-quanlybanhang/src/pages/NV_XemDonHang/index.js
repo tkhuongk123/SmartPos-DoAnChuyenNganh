@@ -18,15 +18,17 @@ function NV_XemDonHang() {
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const [orders, setOrders] = useState([]);
+    const [orderDetail, setOrderDetail] = useState("none");
 
     // useEffects
     useEffect(() => {
         (async () => {
           const orders = await layDanhSachTheoOrderMethod("TAKEAWAY");
-          if(orders.length > 0)
+          console.log(">>> orders: ", orders);
+          if(orders.data.length > 0)
           {
               const ordersContainOrderDetails = await Promise.all(
-                orders.map(async (order) => {
+                orders.data.map(async (order) => {
                   const orderDetails = await layChiTietTheoDon(order.order_id);
                   let orderDetailsContainFoodName = [];
                   if(orderDetails.data)

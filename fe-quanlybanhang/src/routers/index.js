@@ -40,6 +40,7 @@ const cashierRoutes = [
     { path: '/login', component: LoginPage, layout: LoginLayout },
     { path: '/nhanvien/xemtrangthaiban', component: NV_XemTrangThaiBan, layout: MainLayout},
     { path: '/nhanvien/xemdonhang', component: NV_XemDonHang, layout: MainLayout},
+    { path: '/xemDonHang/:orderId', component: OrderStatus, layout: MainLayout},
     { path: '/momo/callback-takeaway', component: MomoCallback_Takeaway, },
 ]
 
