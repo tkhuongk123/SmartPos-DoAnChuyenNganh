@@ -29,6 +29,26 @@ export const layDanhSach = async () => {
   }
 };
 
+export const layDanhSachTheoNgay = async () => {
+  try {
+    const response = await axios.get(`${api}/donhang/layDanhSachTheoNgay`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const layDanhSachTheoOrderMethod = async (order_method ) => {
+  try {
+    const response = await axios.post(`${api}/donhang/layDanhSachTheoOrderMethod`, {
+      order_method,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const layDonHangTheoId = async (order_id ) => {
   try {
     const response = await axios.post(`${api}/donhang/layDonHangTheoId`, {

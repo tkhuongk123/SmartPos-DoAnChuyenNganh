@@ -182,9 +182,13 @@ function ChonMon() {
           {sanPhamHienThi.map((item, index) => {
             return (
               <div
-                className="MonAn"
+                className={`MonAn${item.food_status == "SOLD OUT" ? " soldout" : ""}`}
                 key={index}
                 onClick={(e) => {
+                  if(item.food_status == "SOLD OUT")
+                  {
+                    return
+                  }
                   if (e.target.className !== "MonAn-add") {
                     setSanPham(item);
                     setChiTiet("flex");
@@ -211,6 +215,7 @@ function ChonMon() {
                   onClick={() => {
                     themVaoGio(item);
                   }}
+                   disabled={item.food_status == "SOLD OUT" ? true : false}
                 >
                   Thêm
                 </button>

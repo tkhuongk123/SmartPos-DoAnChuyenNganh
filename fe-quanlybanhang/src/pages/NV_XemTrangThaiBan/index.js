@@ -1,5 +1,6 @@
 // FRAMEWORKS
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 // COMPONENTS
 import "./NV_XemTrangThaiBan.css";
@@ -24,6 +25,7 @@ const now = () => new Date().toLocaleTimeString("vi-VN", { hour: "2-digit", minu
 /* ─── MAIN COMPONENT ────────────────────────────────────────────── */
 function NV_XemTrangThaiBan() {
   const socket = useContext(SocketContext);
+  const navigate = useNavigate();
   const [areas, setAreas] = useState([]);
   const [tables, setTables] = useState([]);
   const [areaTablesFiltered, setAreaTablesFiltered] = useState([]);
@@ -225,6 +227,7 @@ function NV_XemTrangThaiBan() {
         <div style={{ fontSize: 13, color: "#fff9", fontWeight: 600 }}>Màn hình thu ngân</div>
         <div className="tb-spacer" />
         <button className="tb-order" onClick={() => {openOrderForTable()}}>🛒 Order mang về</button>
+        {/* <button className="tb-order" onClick={() => {navigate("/nhanvien/xemdonhang")}}>🛒 Xem Orders</button> */}
         <div className="tb-clock">
           {clock.toLocaleTimeString("vi-VN")} — {clock.toLocaleDateString("vi-VN")}
         </div>

@@ -123,7 +123,39 @@ class SanPhamController {
         })
     }
 
-    
+    updateFoodStatus(req, res, next) {
+        const query = `
+            UPDATE Foods
+            SET food_status = CASE 
+                WHEN food_id IN (
+                    SELECT food_id FROM (
+                        SELECT f.food_id
+                        FROM Foods f
+                        JOIN Food_BOM fb ON f.food_id = fb.food_id
+                        JOIN Ingredients i ON fb.ingredient_id = i.ingredient_id
+                        GROUP BY f.food_id
+                        HAVING MIN(i.stock_quantity / fb.quantity) < 1
+                    ) AS temp
+                )
+                THEN 'SOLD OUT'
+                ELSE 'AVAILABLE'
+            END
+        `;
+
+        db.query(query, (error, result) => {
+            if (error) {
+                return res.status(400).json({
+                    error: error
+                });
+            } else {
+                return res.status(200).json({
+                    message: "Cập nhật trạng thái món thành công",
+                    success: true,
+                    affectedRows: result.affectedRows
+                });
+            }
+        });
+    }
 
 }
 

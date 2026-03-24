@@ -15,6 +15,7 @@ import Bep_NhanDon from "../pages/Bep_NhanDon";
 
 //Cashier pages
 import NV_XemTrangThaiBan from "../pages/NV_XemTrangThaiBan";
+import NV_XemDonHang from "../pages/NV_XemDonHang";
 
 // ===== LAYOUTS =====
 import { LoginLayout, MainLayout } from "../components/Layouts";
@@ -25,6 +26,7 @@ import { LoginLayout, MainLayout } from "../components/Layouts";
 const cashierRoutes = [
     { path: '/login', component: LoginPage, layout: LoginLayout },
     { path: '/nhanvien/xemtrangthaiban', component: NV_XemTrangThaiBan, layout: MainLayout},
+    { path: '/nhanvien/xemdonhang', component: NV_XemDonHang, layout: MainLayout},
     { path: '/momo/callback-takeaway', component: MomoCallback_Takeaway, },
 ]
 

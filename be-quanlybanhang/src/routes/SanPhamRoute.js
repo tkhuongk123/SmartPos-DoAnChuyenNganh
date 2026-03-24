@@ -7,5 +7,6 @@ router.post('/laySanPhamTheoId', SanPhamController.laySanPhamTheoId);
 router.get('/layDsSanPham', SanPhamController.layDsSanPham);
 router.get('/tongSanPham', SanPhamController.tongSanPham);
 router.post('/uploadImage', SanPhamController.uploadImage);
+router.post('/updateFoodStatus', SanPhamController.updateFoodStatus);
 module.exports = router;
 

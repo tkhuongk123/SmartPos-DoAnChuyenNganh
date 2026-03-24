@@ -8,10 +8,11 @@ import { SocketContext } from "../../context/SocketProvider";
 
 
 // APIS
-import { layDanhSach, updateOrderStatus } from "../../services/OrderAPI";
+import { layDanhSach, layDanhSachTheoNgay, updateOrderStatus } from "../../services/OrderAPI";
 import { layChiTietTheoDon } from "../../services/OrderDetailAPI";
 import { getTableById } from "../../services/TableAPI";
-import { laySanPhamTheoId } from "../../services/FoodAPI";
+import { laySanPhamTheoId, updateFoodStatus } from "../../services/FoodAPI";
+import { deductIngredients } from "../../services/IngredientAPI";
 
 
 /* ─── STATUS CONFIG ─────────────────────────────────────────────────── */
@@ -67,7 +68,7 @@ function Bep_NhanDon() {
   useEffect(() => {
     (async () => {
       socket.emit("join_view_order_status");
-      const orders = await layDanhSach();
+      const orders = await layDanhSachTheoNgay();
       if (orders?.data) {
         const ordersContainOrderDetails = await Promise.all(
           orders.data.map(async (order) => {
@@ -149,6 +150,11 @@ function Bep_NhanDon() {
 
   /* advance status */
   const advanceStatus = async (order, nextStatus) => {
+    if(nextStatus == "COOKED")
+    {
+      await deductIngredients(order.order_id);
+      await updateFoodStatus();
+    }
     const updateOrderStatusCheck = await updateOrderStatus(order.order_id, nextStatus);
     if(updateOrderStatusCheck.isUpdated)
     {
@@ -248,7 +254,10 @@ function Bep_NhanDon() {
                 <div
                   key={order.order_id}
                   className={`order-card${sel?.order_id === order.order_id ? " selected" : ""}`}
-                  onClick={() => setSelected(order)}
+                  onClick={() => {
+                    console.log(">>> selected order: ", order)
+                    setSelected(order)}
+                  }
                 >
                   {isNew && <div className="new-dot" />}
                   <div className="order-card-header">
@@ -340,7 +349,21 @@ function Bep_NhanDon() {
               <div className="action-bar">
                 {sel.order_status === "PENDING" && (
                   <>
+                    
                     <button
+                      className="btn btn-blue"
+                      onClick={() => {
+                        advanceStatus(sel, "COOKING");
+                      }}
+                    >
+                      Bắt đầu nấu
+                    </button>
+                  </>
+                )}
+
+                {sel.order_status === "COOKING" && (
+                  <>
+                    {/* <button
                       className="btn btn-secondary"
                       onClick={() => {
                         setOrders(prev =>
@@ -355,27 +378,16 @@ function Bep_NhanDon() {
                       }}
                     >
                       ✕ Huỷ đơn
-                    </button>
+                    </button> */}
                     <button
-                      className="btn btn-blue"
+                      className="btn btn-primary"
                       onClick={() => {
-                        advanceStatus(sel, "COOKING");
+                        advanceStatus(sel, "COOKED");
                       }}
                     >
-                      Bắt đầu nấu
+                      Hoàn thành chế biến
                     </button>
                   </>
-                )}
-
-                {sel.order_status === "COOKING" && (
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      advanceStatus(sel, "COOKED");
-                    }}
-                  >
-                    Hoàn thành chế biến
-                  </button>
                 )}
 
                 {sel.order_status === "COOKED" && (

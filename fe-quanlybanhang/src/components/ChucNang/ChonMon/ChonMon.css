@@ -112,6 +112,17 @@
     transition: all 0.3s ease;
 }
 
+.ChonMon_list .MonAn.soldout {
+  opacity:.5; 
+  cursor:not-allowed; 
+}
+
+.ChonMon_list .MonAn.soldout:hover {
+  transform:none; 
+  border-color:#e8e8e0; 
+  box-shadow:none; 
+}
+
 .ChonMon_list .MonAn:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);

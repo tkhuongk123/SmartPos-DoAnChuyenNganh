@@ -49,7 +49,6 @@ function MomoCallback() {
         // emit socket 
         if(updateTableStatusData.isUpdated)
         {
-          console.log(">>> Emited: ")
           socket.emit("update_table_status", currentTable);
         }
         socket.emit("new_order", order);

@@ -1,0 +1,142 @@
+/* ── Layout ── */
+.NV-order-list-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-in {
+  animation: slideIn 0.28s cubic-bezier(.4,0,.2,1) both;
+}
+@keyframes slideIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Header ── */
+.NV-order-list-wrapper .header {
+  background: #fff;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #e8e8e8;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.back-btn {
+  width: 34px; 
+  height: 34px;
+  border: none; 
+  background: #f5f5f5; 
+  border-radius: 50%;
+  cursor: pointer; 
+  font-size: 16px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  transition: background 0.2s; 
+  flex-shrink: 0;
+}
+
+.back-btn:hover { 
+    background: #e8e8e8; 
+}
+
+.NV-order-list-wrapper .header .header-title { 
+    font-family: 'Lexend', sans-serif; 
+    font-size: 15px; 
+    font-weight: 700; 
+    color: #1a1a2e; 
+}
+
+.NV-order-list-wrapper .header .header-subtitle { 
+    font-size: 11px; 
+    color: #999; 
+    margin-top: 1px; 
+}
+
+.NV-order-list-wrapper .header .header-count { 
+    background: #e3f2fd; 
+    color: #1565C0; 
+    font-size: 12px; 
+    font-weight: 700; 
+    padding: 4px 10px; 
+    border-radius: 20px; 
+}
+
+/* ── Search ── */
+.NV-order-list-wrapper .search-row { 
+    padding: 12px 16px 6px; 
+}
+
+.NV-order-list-wrapper .search-row .search-box {
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  background: #fff; 
+  border: 1.5px solid #e8e8e8; 
+  border-radius: 12px;
+  padding: 10px 14px; 
+  transition: border-color 0.2s;
+}
+
+.NV-order-list-wrapper .search-row .search-box:focus-within {
+     border-color: #90CAF9; 
+}
+
+.NV-order-list-wrapper .search-row .search-icon  {
+     font-size: 14px; flex-shrink: 0; 
+}
+
+.NV-order-list-wrapper .search-row .search-input {
+     flex: 1; 
+     border: none; 
+     outline: none; 
+     font-size: 13px; 
+     font-family: 'Be Vietnam Pro', sans-serif; 
+     background: transparent; 
+     color: #333; 
+}
+
+.NV-order-list-wrapper .search-row .search-input::placeholder {
+     color: #bbb; 
+}
+
+.NV-order-list-wrapper .search-row .search-clear {
+     background: #f0f0f0; 
+     border: none; 
+     border-radius: 50%; 
+     width: 20px; 
+     height: 20px; 
+     cursor: pointer; 
+     font-size: 11px; 
+     color: #888; 
+     display: flex; 
+     align-items: center; 
+     justify-content: center; 
+}
+
+
+/* ── Empty ── */
+.NV-order-list-wrapper .order-list { 
+    flex: 1; padding: 0 16px 24px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; 
+}
+
+.NV-order-list-wrapper .order-list .empty-state { 
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 0; gap: 10px; 
+}
+
+.NV-order-list-wrapper .order-list .empty-state .empty-icon  { 
+    font-size: 48px; 
+}
+
+.NV-order-list-wrapper .order-list .empty-state .empty-text  { 
+    color: #bbb; font-size: 14px; 
+}

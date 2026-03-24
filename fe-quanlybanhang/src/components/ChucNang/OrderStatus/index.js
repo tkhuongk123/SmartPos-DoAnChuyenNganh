@@ -121,8 +121,8 @@ function OrderStatus() {
                 const ordersContainOrderDetails = {
                     ...order,
                     order_details: orderDetailsContainFoodName,
-                    table_name: table?.data.table_name || "",
-                    table_area_name: tableArea?.data.table_area_name || "",
+                    table_name: table?.data ? table.data.table_name : "Mang về",
+                    table_area_name: tableArea?.data ? tableArea.data.table_area_name : "",
                 };
                 setOrder(ordersContainOrderDetails);
             }

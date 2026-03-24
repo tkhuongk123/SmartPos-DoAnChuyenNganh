@@ -56,6 +56,46 @@ class DonHangController {
         }); 
     }
 
+    layDanhSachTheoNgay(req, res, next) {
+        const query = `
+            SELECT * 
+            FROM Orders
+            WHERE DATE(created_at) = CURDATE()
+            ORDER BY created_at DESC
+        `;
+
+        db.query(query, (error, result) => {
+            if (error) {
+                return res.status(400).json({
+                    error: error
+                });
+            } else {
+                return res.status(200).json({
+                    message: "Lấy danh sách theo ngày thành công",
+                    data: result
+                });
+            }
+        });
+    }
+
+    layDanhSachTheoOrderMethod(req, res, next) {
+        const {order_method} = req.body;
+        const query = "SELECT * from orders where order_method=?";
+        const values = [order_method];
+        db.query(query, values, (error, result, field) => {
+            if(error) {
+                return res.status(400).json({
+                    error: error
+                })
+            } else {
+                return res.status(200).json({
+                    message: "Lấy đơn hàng theo id thành công",
+                    data: result
+                })
+            }
+        }); 
+    }
+
     layDonHangTheoId(req, res, next) {
         const {order_id} = req.body
         const query = "SELECT * from orders where order_id=?"
