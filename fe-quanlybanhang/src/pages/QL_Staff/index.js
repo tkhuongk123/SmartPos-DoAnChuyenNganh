@@ -80,7 +80,10 @@ function QL_Staff() {
     const openModal = (staff = null) => {
         if (staff) {
             setEditingStaff(staff);
-            const formData = { ...staff };
+            const formData = {
+                ...staff,
+                is_active: staff.is_active === 1 || staff.is_active === true
+            };
             // Don't show password when editing
             delete formData.password;
             form.setFieldsValue(formData);
@@ -147,13 +150,13 @@ function QL_Staff() {
             width: 120,
             align: 'center',
             render: (isActive) => (
-                <span className={`status-badge ${isActive ? 'active' : 'inactive'}`}>
-                    {isActive ? 'Hoạt động' : 'Ngừng'}
+                <span className={`status-badge ${isActive === 1 || isActive === true ? 'active' : 'inactive'}`}>
+                    {isActive === 1 || isActive === true ? 'Hoạt động' : 'Ngừng'}
                 </span>
             ),
             filters: [
-                { text: 'Hoạt động', value: true },
-                { text: 'Ngừng', value: false },
+                { text: 'Hoạt động', value: 1 },
+                { text: 'Ngừng', value: 0 },
             ],
             onFilter: (value, record) => record.is_active === value,
         },
@@ -308,17 +311,6 @@ function QL_Staff() {
                             />
                         </Form.Item>
                     )}
-
-                    <Form.Item
-                        label="Số điện thoại"
-                        name="phone"
-                        rules={[
-                            { required: true, message: 'Vui lòng nhập số điện thoại!' },
-                            { pattern: /^[0-9]{10}$/, message: 'Số điện thoại không hợp lệ!' }
-                        ]}
-                    >
-                        <Input placeholder="Nhập số điện thoại" />
-                    </Form.Item>
 
                     <Form.Item
                         label="Vai trò"
