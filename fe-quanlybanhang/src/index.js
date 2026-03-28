@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'antd/dist/reset.css';
 import App from './App';
 import Toast from './components/components/Toast';
 import GlobalStyles from "./components/GlobalStyles";
