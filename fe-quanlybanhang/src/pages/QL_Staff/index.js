@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form, Input, Select, Switch, Space, message, Popconfirm, Tag } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, LockOutlined } from '@ant-design/icons';
-import axios from 'axios';
 import './QL_Staff.css';
+import { layDsUser, xoaUser, themUser, suaUser } from '../../services/UserAPI';
 
 const { Option } = Select;
 
@@ -17,40 +17,11 @@ function QL_Staff() {
     const fetchStaff = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:3001/api/staff');
-            setStaffList(response.data);
+            const response = await layDsUser();
+            setStaffList(response.users || []);
         } catch (error) {
             console.error('Error fetching staff:', error);
-            // Mock data for development
-            setStaffList([
-                {
-                    user_id: 1,
-                    name: 'Nguyễn Văn A',
-                    username: 'manager01',
-                    phone: '0901234567',
-                    email: 'manager@example.com',
-                    role: 'MANAGER',
-                    is_active: true
-                },
-                {
-                    user_id: 2,
-                    name: 'Trần Thị B',
-                    username: 'cashier01',
-                    phone: '0912345678',
-                    email: 'cashier@example.com',
-                    role: 'CASHIER',
-                    is_active: true
-                },
-                {
-                    user_id: 3,
-                    name: 'Lê Văn C',
-                    username: 'kitchen01',
-                    phone: '0923456789',
-                    email: 'kitchen@example.com',
-                    role: 'KITCHEN',
-                    is_active: true
-                }
-            ]);
+            message.error('Không thể tải danh sách nhân viên');
         } finally {
             setLoading(false);
         }
@@ -65,11 +36,22 @@ function QL_Staff() {
         try {
             if (editingStaff) {
                 // Update staff
-                await axios.put(`http://localhost:3001/api/staff/${editingStaff.user_id}`, values);
+                await suaUser({
+                    user_id: editingStaff.user_id,
+                    name: values.name,
+                    role: values.role,
+                    is_active: values.is_active ? 1 : 0
+                });
                 message.success('Cập nhật nhân viên thành công!');
             } else {
                 // Add new staff
-                await axios.post('http://localhost:3001/api/staff', values);
+                await themUser({
+                    name: values.name,
+                    username: values.username,
+                    password: values.password,
+                    role: values.role,
+                    is_active: values.is_active ? 1 : 0
+                });
                 message.success('Thêm nhân viên thành công!');
             }
             setIsModalOpen(false);
@@ -78,14 +60,14 @@ function QL_Staff() {
             fetchStaff();
         } catch (error) {
             console.error('Error saving staff:', error);
-            message.error('Có lỗi xảy ra!');
+            message.error(error.response?.data?.messageInvalid || error.response?.data?.error || 'Có lỗi xảy ra!');
         }
     };
 
     // Handle delete staff
     const handleDelete = async (userId) => {
         try {
-            await axios.delete(`http://localhost:3001/api/staff/${userId}`);
+            await xoaUser(userId);
             message.success('Xóa nhân viên thành công!');
             fetchStaff();
         } catch (error) {
@@ -140,17 +122,6 @@ function QL_Staff() {
             dataIndex: 'username',
             key: 'username',
             width: 150,
-        },
-        {
-            title: 'Số điện thoại',
-            dataIndex: 'phone',
-            key: 'phone',
-            width: 130,
-        },
-        {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
         },
         {
             title: 'Vai trò',
@@ -347,17 +318,6 @@ function QL_Staff() {
                         ]}
                     >
                         <Input placeholder="Nhập số điện thoại" />
-                    </Form.Item>
-
-                    <Form.Item
-                        label="Email"
-                        name="email"
-                        rules={[
-                            { required: true, message: 'Vui lòng nhập email!' },
-                            { type: 'email', message: 'Email không hợp lệ!' }
-                        ]}
-                    >
-                        <Input placeholder="Nhập email" />
                     </Form.Item>
 
                     <Form.Item
