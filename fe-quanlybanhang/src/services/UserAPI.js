@@ -99,3 +99,108 @@ export const xoa = async ({ id }) => {
     throw error;
   }
 };
+
+// ==================== API MỚI CHO USER ====================
+
+
+export const layDsUser = async () => {
+  try {
+    const response = await axios.get(`${api}/user/layDsUser`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const layUser = async (user_id) => {
+  try {
+    const response = await axios.get(`${api}/user/layUser/${user_id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+export const themUser = async ({ name, username, password, role, is_active }) => {
+  try {
+    const response = await axios.post(`${api}/user/them`, {
+      name,
+      username,
+      password,
+      role,
+      is_active,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+export const suaUser = async ({ user_id, name, role, is_active }) => {
+  try {
+    const response = await axios.post(`${api}/user/sua`, {
+      user_id,
+      name,
+      role,
+      is_active,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const xoaUser = async (user_id) => {
+  try {
+    const response = await axios.post(`${api}/user/xoa`, { user_id });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const doiMatKhau = async ({ user_id, password_old, password_new }) => {
+  try {
+    const response = await axios.post(`${api}/user/doiMatKhau`, {
+      user_id,
+      password_old,
+      password_new,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
+export const resetMatKhau = async ({ user_id, password_new }) => {
+  try {
+    const response = await axios.post(`${api}/user/resetMatKhau`, {
+      user_id,
+      password_new,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const tongUser = async () => {
+  try {
+    const response = await axios.get(`${api}/user/tongUser`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const tongUserTheoRole = async () => {
+  try {
+    const response = await axios.get(`${api}/user/tongUserTheoRole`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
