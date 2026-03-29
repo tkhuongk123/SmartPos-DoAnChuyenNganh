@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form, Input, Select, Switch, Space, message, Popconfirm, Tag } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, LockOutlined } from '@ant-design/icons';
+import { PlusOutlined, EditOutlined, DeleteOutlined, LockOutlined, CrownOutlined, DollarOutlined, CoffeeOutlined, TeamOutlined } from '@ant-design/icons';
 import './QL_Staff.css';
 import { layDsUser, xoaUser, themUser, suaUser } from '../../services/UserAPI';
 
@@ -212,28 +212,36 @@ function QL_Staff() {
 
             <div className="stats-cards">
                 <div className="stat-card">
-                    <div className="stat-icon manager">👨‍💼</div>
+                    <div className="stat-icon manager">
+                        <CrownOutlined />
+                    </div>
                     <div className="stat-content">
                         <div className="stat-value">{staffList.filter(s => s.role === 'MANAGER').length}</div>
                         <div className="stat-label">Quản lý</div>
                     </div>
                 </div>
                 <div className="stat-card">
-                    <div className="stat-icon cashier">💰</div>
+                    <div className="stat-icon cashier">
+                        <DollarOutlined />
+                    </div>
                     <div className="stat-content">
                         <div className="stat-value">{staffList.filter(s => s.role === 'CASHIER').length}</div>
                         <div className="stat-label">Thu ngân</div>
                     </div>
                 </div>
                 <div className="stat-card">
-                    <div className="stat-icon kitchen">👨‍🍳</div>
+                    <div className="stat-icon kitchen">
+                        <CoffeeOutlined />
+                    </div>
                     <div className="stat-content">
                         <div className="stat-value">{staffList.filter(s => s.role === 'KITCHEN').length}</div>
                         <div className="stat-label">Bếp</div>
                     </div>
                 </div>
                 <div className="stat-card">
-                    <div className="stat-icon total">👥</div>
+                    <div className="stat-icon total">
+                        <TeamOutlined />
+                    </div>
                     <div className="stat-content">
                         <div className="stat-value">{staffList.length}</div>
                         <div className="stat-label">Tổng nhân viên</div>

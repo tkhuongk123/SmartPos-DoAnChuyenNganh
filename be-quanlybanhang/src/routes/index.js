@@ -8,6 +8,7 @@ const ChiTietDonHangRoute = require("./ChiTietDonHangRoute");
 const IngredientRoute = require("./IngredientRoute");
 const SupplierRoute = require("./SupplierRoute");
 const UserRoute = require("./UserRoute");
+const ImportRoute = require("./ImportRoute");
 
 
 function routes(app) {
@@ -21,6 +22,7 @@ function routes(app) {
     app.use("/ingredient", IngredientRoute);
     app.use("/supplier", SupplierRoute);
     app.use("/user", UserRoute);
+    app.use("/import", ImportRoute);
 }
 
 module.exports = routes

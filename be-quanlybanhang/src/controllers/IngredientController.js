@@ -1,6 +1,23 @@
 const db = require("../config/db");
 
 class IngredientController {
+  
+    layDsIngredient(req, res, next) {
+        const query = "SELECT * FROM Ingredients ORDER BY ingredient_name ASC";
+        db.query(query, (error, result) => {
+            if (error) {
+                return res.status(400).json({
+                    error: error
+                });
+            } else {
+                return res.status(200).json({
+                    message: "Lấy danh sách nguyên liệu thành công",
+                    ingredients: result
+                });
+            }
+        });
+    }
+
     // Trừ nguyên liệu khi đơn đã nấu xong
     deductIngredients(req, res, next) {
         const { order_id } = req.body;
@@ -46,7 +63,6 @@ class IngredientController {
                 });
             });
 
-            // 👉 Chạy tất cả update
             Promise.all(updates)
                 .then(() => {
                     return res.status(200).json({
