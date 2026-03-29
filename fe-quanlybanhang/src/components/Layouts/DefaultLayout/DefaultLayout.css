@@ -7,8 +7,12 @@
     display: flex;
     flex-direction: column;
     padding-left: var(--with-toolbar);
-} 
+}
 
 .DefaultLayout_Main {
     flex: 1;
+}
+
+.DefaultLayout_Main.with-navbar {
+    padding-top: 70px;
 }
