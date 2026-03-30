@@ -3,7 +3,7 @@ const db = require("../config/db");
 class SupplierController {
    
     layDsSupplier(req, res, next) {
-        const query = "SELECT * FROM Suppliers ORDER BY supplier_id DESC";
+        const query = "SELECT * FROM Suppliers WHERE is_active = 1 ORDER BY supplier_id DESC";
         db.query(query, (error, result, field) => {
             if (error) {
                 return res.status(400).json({
@@ -145,7 +145,7 @@ class SupplierController {
             })
         }
 
-        const query = "DELETE FROM Suppliers WHERE supplier_id=?";
+        const query = "UPDATE Suppliers SET is_active = 0 WHERE supplier_id=?";
         db.query(query, [supplier_id], (error, result) => {
             if (error) {
                 return res.status(400).json({
