@@ -6,6 +6,7 @@ import { layDsIngredient } from '../../services/IngredientAPI';
 import { layDsImport, layImport, taoPhieuNhap } from '../../services/ImportAPI';
 import './QL_Import.css';
 import dayjs from 'dayjs';
+import { updateFoodStatus } from '../../services/FoodAPI';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -96,7 +97,7 @@ function QL_Import() {
                 note: values.note || '',
                 items: importItems
             });
-
+            await updateFoodStatus();
             message.success('Tạo phiếu nhập thành công!');
             setIsModalOpen(false);
             form.resetFields();
