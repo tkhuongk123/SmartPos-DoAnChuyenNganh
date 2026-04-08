@@ -53,3 +53,36 @@ export const updateTableStatus = async ({table_id, table_status}) => {
   }
 };
 
+export const createTable = async (data) => {
+  try {
+    const response = await axios.post(`${api}/table/createTable`, {
+      table_name: data.table_name,
+      table_area_id: data.table_area_id
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateTable = async (data) => {
+  try {
+    const response = await axios.put(`${api}/table/updateTable`, {
+      table_id: data.table_id,
+      table_name: data.table_name,
+      table_area_id: data.table_area_id
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteTable = async (table_id) => {
+  try {
+    const response = await axios.delete(`${api}/table/deleteTable/${table_id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

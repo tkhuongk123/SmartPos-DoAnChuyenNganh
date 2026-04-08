@@ -4,7 +4,7 @@ const mysql = require("mysql2")
 const db = mysql.createConnection({
   host: "localhost", // Địa chỉ server của database
   user: "root", // Tên người dùng
-  password: "", // Mật khẩu
+  password: "admin", // Mật khẩu
   database: "smart_pos", // Tên database
 })
 

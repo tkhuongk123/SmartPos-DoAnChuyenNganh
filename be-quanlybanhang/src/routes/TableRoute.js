@@ -7,6 +7,9 @@ router.get('/getAreas', TableController.getAreas);
 router.get('/getTableById/:tableId', TableController.getTableById);
 router.get('/getTableAreaByTableId/:tableId', TableController.getTableAreaByTableId);
 router.post('/updateTableStatus', TableController.updateTableStatus);
+router.post('/createTable', TableController.createTable);
+router.put('/updateTable', TableController.updateTable);
+router.delete('/deleteTable/:id', TableController.deleteTable);
 
 module.exports = router;
 

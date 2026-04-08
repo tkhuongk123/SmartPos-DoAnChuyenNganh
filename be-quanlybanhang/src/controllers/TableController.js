@@ -2,6 +2,8 @@ const db = require("../config/db");
 
 class TableController {
 
+
+
     getTables(req, res, next) {
         const query = "SELECT * FROM tables";
         db.query(query, (error, result, field) => {
@@ -96,7 +98,59 @@ class TableController {
         })
     }
 
-    
+    createTable(req, res) {
+    const { table_name, table_area_id } = req.body;
+
+    const query = "INSERT INTO tables (table_name, table_area_id) VALUES (?, ?)";
+
+    db.query(query, [table_name, table_area_id], (error, result) => {
+        if (error) {
+            return res.status(400).json({ error });
+        }
+
+        return res.status(200).json({
+            message: "Thêm bàn thành công"
+        });
+    });
+    }
+
+    updateTable(req, res) {
+    const { table_id, table_name, table_area_id } = req.body;
+
+    const query = `
+        UPDATE tables 
+        SET table_name = ?, table_area_id = ?
+        WHERE table_id = ?
+    `;
+
+    db.query(query, [table_name, table_area_id, table_id], (error) => {
+        if (error) {
+            return res.status(400).json({ error });
+        }
+
+        return res.status(200).json({
+            message: "Cập nhật bàn thành công"
+        });
+    });
+
+}
+
+deleteTable(req, res) {
+    const { id } = req.params;
+
+    const query = "DELETE FROM tables WHERE table_id = ?";
+
+    db.query(query, [id], (error) => {
+        if (error) {
+            return res.status(400).json({ error });
+        }
+
+        return res.status(200).json({
+            message: "Xóa bàn thành công"
+        });
+    });
+}
+
 }
 
 module.exports = new TableController();
