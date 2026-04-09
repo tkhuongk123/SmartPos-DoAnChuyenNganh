@@ -21,7 +21,7 @@ class TableController {
     }
 
     getAreas(req, res, next) {
-        const query = "SELECT * FROM table_areas";
+        const query = "SELECT * FROM table_areas WHERE is_active = 1";
         db.query(query, (error, result, field) => {
             if (error) {
                 return res.status(400).json({
@@ -151,6 +151,54 @@ deleteTable(req, res) {
     });
 }
 
+
+createArea(req, res) {
+    const { table_area_name } = req.body;
+
+    const query = "INSERT INTO table_areas (table_area_name) VALUES (?)";
+
+    db.query(query, [table_area_name], (err) => {
+        if (err) return res.status(400).json({ err });
+
+        res.json({ message: "Thêm khu vực thành công" });
+    });
 }
+
+
+updateArea(req, res) {
+    const { table_area_id, table_area_name } = req.body;
+
+    const query = `
+        UPDATE table_areas 
+        SET table_area_name = ?
+        WHERE table_area_id = ?
+    `;
+
+    db.query(query, [table_area_name, table_area_id], (err) => {
+        if (err) return res.status(400).json({ err });
+
+        res.json({ message: "Cập nhật khu vực thành công" });
+    });
+}
+
+
+deleteArea(req, res) {
+    const { id } = req.params;
+
+    const query = `
+        UPDATE table_areas 
+        SET is_active = 0 
+        WHERE table_area_id = ?
+    `;
+
+    db.query(query, [id], (err) => {
+        if (err) return res.status(400).json({ err });
+
+        res.json({ message: "Xóa khu vực thành công" });
+    });
+}
+}
+
+
 
 module.exports = new TableController();

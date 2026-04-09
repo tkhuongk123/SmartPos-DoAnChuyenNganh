@@ -86,3 +86,18 @@ export const deleteTable = async (table_id) => {
     throw error;
   }
 };
+
+export const createArea = async (data) => {
+    const res = await axios.post(`${api}/table/createArea`, data);
+    return res.data;
+};
+
+export const updateArea = async (data) => {
+    const res = await axios.post(`${api}/table/updateArea`, data);
+    return res.data;
+};
+
+export const deleteArea = async (id) => {
+    const res = await axios.delete(`${api}/table/deleteArea/${id}`);
+    return res.data;
+};

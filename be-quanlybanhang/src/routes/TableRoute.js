@@ -10,6 +10,8 @@ router.post('/updateTableStatus', TableController.updateTableStatus);
 router.post('/createTable', TableController.createTable);
 router.put('/updateTable', TableController.updateTable);
 router.delete('/deleteTable/:id', TableController.deleteTable);
-
+router.post('/createArea', TableController.createArea);
+router.post('/updateArea', TableController.updateArea);
+router.delete('/deleteArea/:id', TableController.deleteArea);
 module.exports = router;
 
