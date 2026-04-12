@@ -1,0 +1,98 @@
+.QL_Dashboard {
+    padding: 24px;
+}
+
+.QL_Dashboard__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.QL_Dashboard__header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.QL_Dashboard__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.QL_Dashboard__card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 16px 40px rgba(41, 52, 79, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.QL_Dashboard__cardTitle {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.QL_Dashboard__value {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+
+.QL_Dashboard__subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.QL_Dashboard__loading {
+    margin-top: 32px;
+    color: #374151;
+    font-size: 1rem;
+}
+
+.QL_Dashboard__error {
+    margin-top: 32px;
+    color: #b91c1c;
+    font-size: 1rem;
+}
+
+.QL_Dashboard__recentOrders {
+    margin-top: 32px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 16px 40px rgba(41, 52, 79, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.QL_Dashboard__recentHeader {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.QL_Dashboard__recentHeader h4 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.QL_Dashboard__recentSubtitle {
+    margin: 0;
+    color: #6b7280;
+}
