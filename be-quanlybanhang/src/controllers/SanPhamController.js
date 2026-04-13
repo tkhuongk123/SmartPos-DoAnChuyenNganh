@@ -6,45 +6,28 @@ const db = require("../config/db");
 
 class SanPhamController {
 
-    uploadImage(req, res, next) {
-        // Cấu hình lưu file
+    uploadImage(req, res) {
         const storage = multer.diskStorage({
             destination: (req, file, cb) => {
                 const folder = req.query.folder || "default";
                 const uploadPath = path.join(__dirname, `../../public/uploads/${folder}`);
-                // Nếu folder chưa tồn tại thì tạo
-                if (!fs.existsSync(uploadPath)) {
-                fs.mkdirSync(uploadPath, { recursive: true });
-                }
+                if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath, { recursive: true });
                 cb(null, uploadPath);
             },
             filename: (req, file, cb) => {
-                // const id = req.query.id;
-                // const ext = path.extname(file.originalname); 
-                cb(null, file.originalname);
+                const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+                cb(null, uniqueSuffix + path.extname(file.originalname));
             },
         });
-
         const upload = multer({ storage }).single("file");
-
-        // Gọi middleware upload
-        upload(req, res, function (err) {
-            if (err) {
-                return res.status(400).json({ error: "Upload thất bại", details: err });
-            }
-
-            if (!req.file) {
-                return res.status(400).json({ error: "Không có file nào được chọn" });
-            }
-
-            // Trả về đường dẫn ảnh
-            res.json({
-                message: "Upload thành công",
-                url: `/images/${req.file.filename}`,
-            });
+        upload(req, res, (err) => {
+            if (err) return res.status(400).json({ error: "Upload thất bại" });
+            if (!req.file) return res.status(400).json({ error: "Không có file" });
+            res.status(200).json({ url: req.file.filename });
         });
     }
 
+    
     laySanPhamTheoLoai(req, res, next) {
         const { food_category_id } = req.body;
         const query = "SELECT * FROM foods WHERE food_category_id=?";
@@ -154,6 +137,38 @@ class SanPhamController {
                     affectedRows: result.affectedRows
                 });
             }
+        });
+    }
+
+    createFood(req, res) {
+        const { food_category_id, food_name, price, food_status, image, description } = req.body;
+        const query = `INSERT INTO Foods (food_category_id, food_name, price, food_status, image, description) 
+                       VALUES (?, ?, ?, ?, ?, ?)`;
+        
+        db.query(query, [food_category_id, food_name, price, food_status || 'AVAILABLE', image, description], (error, result) => {
+            if (error) return res.status(400).json({ error });
+            return res.status(201).json({ message: "Thêm món ăn thành công", success: true });
+        });
+    }
+
+    updateFood(req, res) {
+        const { id } = req.params;
+        const { food_category_id, food_name, price, food_status, image, description } = req.body;
+        const query = `UPDATE Foods SET food_category_id = ?, food_name = ?, price = ?, 
+                       food_status = ?, image = ?, description = ? WHERE food_id = ?`;
+        
+        db.query(query, [food_category_id, food_name, price, food_status, image, description, id], (error, result) => {
+            if (error) return res.status(400).json({ error });
+            return res.status(200).json({ message: "Cập nhật thành công", success: true });
+        });
+    }
+
+    deleteFood(req, res) {
+        const { id } = req.params;
+        const query = "UPDATE Foods SET is_active = 0 WHERE food_id = ?";
+        db.query(query, [id], (error, result) => {
+            if (error) return res.status(400).json({ error });
+            return res.status(200).json({ message: "Xóa món ăn thành công", success: true });
         });
     }
 

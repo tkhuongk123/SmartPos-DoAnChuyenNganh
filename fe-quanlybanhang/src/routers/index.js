@@ -49,6 +49,7 @@ const managerRoutes = [
     { path: '/quanly/dashboard', component: QL_Dashboard, },
     { path: '/quanly/food', component: QL_Food, },
     { path: '/quanly/food-category', component: QL_FoodCategory, },
+    { path: '/quanly/ingredient', component: QL_Ingredient, },
     { path: '/quanly/import', component: QL_Import, },
     { path: '/quanly/supplier', component: QL_Supplier, },
     { path: '/quanly/order', component: QL_Order, },

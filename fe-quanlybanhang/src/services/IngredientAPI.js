@@ -21,4 +21,33 @@ export const deductIngredients = async (order_id) => {
   }
 };
 
+export const createIngredient = async (data) => {
+    try {
+        const response = await axios.post(`${api}/ingredient/create`, data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+// Sửa nguyên liệu
+export const updateIngredient = async (id, data) => {
+    try {
+        const response = await axios.put(`${api}/ingredient/update/${id}`, data);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+// Xóa nguyên liệu
+export const deleteIngredient = async (id) => {
+    try {
+        const response = await axios.delete(`${api}/ingredient/delete/${id}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 

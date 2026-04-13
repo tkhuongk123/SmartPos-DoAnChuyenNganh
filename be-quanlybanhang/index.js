@@ -29,6 +29,8 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 // ====== CREATE HTTP SERVER ======
 const server = http.createServer(app);
 
+app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+
 // ====== INIT SOCKET ======
 const io = new Server(server, {
     cors: {

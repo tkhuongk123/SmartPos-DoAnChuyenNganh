@@ -3,7 +3,8 @@ const db = require("../config/db");
 class IngredientController {
   
     layDsIngredient(req, res, next) {
-        const query = "SELECT * FROM Ingredients ORDER BY ingredient_name ASC";
+        const query = "SELECT * FROM Ingredients WHERE is_active = 1 OR is_active IS NULL ORDER BY ingredient_name ASC";
+        
         db.query(query, (error, result) => {
             if (error) {
                 return res.status(400).json({
@@ -75,6 +76,52 @@ class IngredientController {
                         error: error
                     });
                 });
+        });
+    }
+
+    createIngredient(req, res) {
+        const { ingredient_name, unit, stock_quantity } = req.body;
+        const query = "INSERT INTO Ingredients (ingredient_name, unit, stock_quantity) VALUES (?, ?, ?)";
+        
+        db.query(query, [ingredient_name, unit, stock_quantity || 0], (error, result) => {
+            if (error) {
+                return res.status(400).json({ error: error });
+            }
+            return res.status(201).json({
+                message: "Thêm nguyên liệu thành công",
+                success: true
+            });
+        });
+    }
+
+    updateIngredient(req, res) {
+        const { id } = req.params;
+        const { ingredient_name, unit, stock_quantity } = req.body;
+        const query = "UPDATE Ingredients SET ingredient_name = ?, unit = ?, stock_quantity = ? WHERE ingredient_id = ?";
+        
+        db.query(query, [ingredient_name, unit, stock_quantity, id], (error, result) => {
+            if (error) {
+                return res.status(400).json({ error: error });
+            }
+            return res.status(200).json({
+                message: "Cập nhật nguyên liệu thành công",
+                success: true
+            });
+        });
+    }
+
+    deleteIngredient(req, res) {
+        const { id } = req.params;
+        const query = "UPDATE Ingredients SET is_active = 0 WHERE ingredient_id = ?";
+        
+        db.query(query, [id], (error, result) => {
+            if (error) {
+                return res.status(400).json({ error: error });
+            }
+            return res.status(200).json({
+                message: "Xóa nguyên liệu thành công",
+                success: true
+            });
         });
     }
 }

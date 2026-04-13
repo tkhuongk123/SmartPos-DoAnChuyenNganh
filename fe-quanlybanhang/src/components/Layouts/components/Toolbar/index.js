@@ -69,6 +69,13 @@ function Toolbar() {
           </li>
           <li
             onClick={() => {
+              navigate("/quanly/ingredient");
+            }}
+          >
+            Quản lý nguyên liệu
+          </li>
+          <li
+            onClick={() => {
               navigate("/quanly/import");
             }}
           >

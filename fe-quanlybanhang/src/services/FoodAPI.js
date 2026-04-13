@@ -62,5 +62,21 @@ export const updateFoodStatus = async () => {
   }
 };
 
+export const createFood = async (data) => {
+    const response = await axios.post(`${api}/sanpham/create`, data);
+    return response.data;
+};
+
+export const updateFood = async (id, data) => {
+    const response = await axios.put(`${api}/sanpham/update/${id}`, data);
+    return response.data;
+};
+
+export const deleteFood = async (id) => {
+    const response = await axios.delete(`${api}/sanpham/delete/${id}`);
+    return response.data;
+};
+
+
 
 
