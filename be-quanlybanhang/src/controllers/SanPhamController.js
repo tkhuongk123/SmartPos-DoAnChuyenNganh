@@ -69,7 +69,7 @@ class SanPhamController {
     }
 
     layDsSanPham(req, res, next) {
-        const query = "SELECT * FROM foods"
+        const query = "SELECT * FROM foods where is_active = 1"
         db.query(query, (error, result, field) => {
             if (error) 
             {

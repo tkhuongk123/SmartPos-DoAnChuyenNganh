@@ -90,7 +90,8 @@
 
 .ChonSoLuong_content-body .detail-info {
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .ChonSoLuong_content-body .detail-info .name {

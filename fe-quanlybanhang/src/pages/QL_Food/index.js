@@ -24,7 +24,7 @@ function QL_Food() {
         try {
             const [foodRes, catRes] = await Promise.all([layDsSanPham(), layDs()]);
             setFoods(foodRes.dsSanPham || []);
-            setCategories(catRes.data || []);
+            setCategories(catRes.dsLoaiSanPham || []);
         } catch (error) {
             message.error('Lỗi tải dữ liệu');
         } finally {
@@ -93,7 +93,18 @@ function QL_Food() {
             render: (_, record) => (
                 <Space>
                     <Button icon={<EditOutlined />} onClick={() => handleEdit(record)}>Sửa</Button>
-                    <Popconfirm title="Xóa món ăn này?" onConfirm={() => deleteFood(record.food_id).then(fetchData)}>
+                    <Popconfirm 
+                        title="Xóa món ăn này?" 
+                        onConfirm={async () => {
+                            try {
+                                await deleteFood(record.food_id);
+                                message.success('Xóa thành công');
+                                fetchData();
+                            } catch (error) {
+                                message.error('Xóa thất bại');
+                            }
+                        }}
+                    >
                         <Button danger icon={<DeleteOutlined />}>Xóa</Button>
                     </Popconfirm>
                 </Space>
