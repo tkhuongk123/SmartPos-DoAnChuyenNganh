@@ -19,6 +19,50 @@ class IngredientController {
         });
     }
 
+    checkIngredients(req, res) {
+        const { food_id, quantity } = req.body;
+
+        const query = `
+            SELECT i.ingredient_name, i.stock_quantity,
+                fb.quantity AS ingredient_needed
+            FROM Food_BOM fb
+            JOIN Ingredients i ON fb.ingredient_id = i.ingredient_id
+            WHERE fb.food_id = ?
+        `;
+
+        db.query(query, [food_id], (err, results) => {
+            if (err) {
+                return res.status(400).json({ error: err });
+            }
+
+            let lack = [];
+
+            for (let item of results) {
+                const need = item.ingredient_needed * quantity;
+
+                if (item.stock_quantity < need) {
+                    lack.push({
+                        ingredient: item.ingredient_name,
+                        lack: need - item.stock_quantity
+                    });
+                }
+            }
+
+            if (lack.length > 0) {
+                return res.status(200).json({
+                    success: false,
+                    message: "Không đủ nguyên liệu",
+                    lack
+                });
+            }
+
+            return res.status(200).json({
+                success: true,
+                message: "Đủ nguyên liệu"
+            });
+        });
+    }
+
     // Trừ nguyên liệu khi đơn đã nấu xong
     deductIngredients(req, res, next) {
         const { order_id } = req.body;

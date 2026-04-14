@@ -4,13 +4,27 @@ import formatPrice from "../../../../utils/formatPrice";
 import { NotifySuccess } from "../../../components/Toast";
 import { Star, ThumbsUp } from "lucide-react";
 import { tongDonHangTheoSanPham } from "../../../../services/FoodAPI";
+import { checkIngredients } from "../../../../services/IngredientAPI";
 
 function ChonSoLuong(props) {
   const [soLuong, setSoLuong] = useState(1);
+  const [disable, setDisable] = useState(false);
   const [ghiChu, setGhiChu] = useState("");
 
   const nguoidung = JSON.parse(sessionStorage.getItem("nguoidung"));
 
+  useEffect(() => {
+      (async () => {
+        const resCheckIngredient = await checkIngredients(props.sanPham.food_id, soLuong + 1)
+        if(!resCheckIngredient.success)
+        {
+          setDisable(true);
+          return;
+        }
+        setDisable(false);
+        return;
+      })();
+  }, [soLuong]);
 
   function themVaoGioHang() {
     const gioHang = JSON.parse(sessionStorage.getItem("giohang"));
@@ -46,6 +60,9 @@ function ChonSoLuong(props) {
     }
     NotifySuccess(`Đã thêm "${props.sanPham.food_name}" vào giỏ hàng`);
   }
+
+  
+
 
 
   // Định dạng ngày
@@ -129,6 +146,7 @@ function ChonSoLuong(props) {
                 />
                 <button
                   className="increaseBtn"
+                  disabled={disable}
                   onClick={() => {
                     if (soLuong < 20) {
                       setSoLuong(soLuong + 1);

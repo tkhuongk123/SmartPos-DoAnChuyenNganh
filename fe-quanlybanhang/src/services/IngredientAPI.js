@@ -10,6 +10,18 @@ export const layDsIngredient = async () => {
   }
 };
 
+export const checkIngredients = async (food_id, quantity) => {
+  try {
+    const response = await axios.post(`${api}/ingredient/checkIngredients`, {
+      food_id,
+      quantity
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const deductIngredients = async (order_id) => {
   try {
     const response = await axios.post(`${api}/ingredient/deductIngredients`, {
